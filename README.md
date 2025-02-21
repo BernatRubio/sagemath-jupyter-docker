@@ -37,7 +37,7 @@ cd sagemath-jupyter-docker
 
 ### **3️⃣ Start SageMath Jupyter**
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 ### **4️⃣ Open Jupyter Notebook**
