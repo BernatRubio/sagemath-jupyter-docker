@@ -63,7 +63,7 @@ By default, this setup **disables token authentication** for easier access. If y
 
 ```yaml
 command: >
-  sage -n jupyter --no-browser --ip=0.0.0.0 --port=8888
+  sage -n jupyterlab --no-browser --ip=0.0.0.0 --port=8888 --NotebookApp.notebook_dir='/home/sage/notebooks'
 ```
 
 ## 🐳 Running Without Docker Compose
