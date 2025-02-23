@@ -6,7 +6,7 @@ Easily run **SageMath** with Jupyter Notebook using **Docker** and **Docker Comp
 - **Zero local installation:**  Run SageMath without installing it on your host.
 - **Jupyter Notebook Interface:** Start working immediately with Jupyter’s interactive interface.
 - **Persistent Storage:** All your notebooks are stored in the notebooks/ directory.
-- **Local Access:** The service binds to 127.0.0.1, ensuring it’s only accessible from your machine (by default).
+- **Local Access:** The service binds to 127.0.0.1, ensuring it’s only accessible from your machine.
 - **Customizable Security:** Token authentication is disabled by default for ease of use but can be enabled for public or shared environments.
 
 ## 📥 About the Docker Image
@@ -56,22 +56,13 @@ sagemath-jupyter-docker/
 docker compose down
 ```
 
-## 🛠 Customization
-
-### **Enable Authentication (Recommended for Public Networks)**
-By default, this setup **disables token authentication** for easier access. If you want to enable authentication, modify the `compose.yaml` file:
-
-```yaml
-command: >
-  sage -n jupyterlab --no-browser --ip=0.0.0.0 --port=8888 --NotebookApp.notebook_dir='/home/sage/notebooks'
-```
-
 ## 🐳 Running Without Docker Compose
 If you prefer using `docker run`, you can start the container with:
 
 ```sh
-docker run -p 127.0.0.1:8888:8888 -v $(pwd)/notebooks:/home/sage/notebooks sagemath/sagemath sage -n jupyterlab --no-browser --ip=0.0.0.0 --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.notebook_dir='/home/sage/notebooks'
+docker run --platform linux/amd64 -p 127.0.0.1:8888:8888 -v $(pwd)/notebooks:/home/sage/notebooks sagemath/sagemath sage -n jupyterlab --no-browser --ip=0.0.0.0 --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.notebook_dir='/home/sage/notebooks'
 ```
+**Note:** This command must be executed from the root of the repository, as it relies on the correct relative path for volume mounting (```$(pwd)/notebooks```).
 
 ## 🎯 Contributions & Issues
 Feel free to contribute or report any issues! Fork the repo, make improvements, and submit a **pull request**.
