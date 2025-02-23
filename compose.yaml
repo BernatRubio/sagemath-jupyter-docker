@@ -3,7 +3,7 @@ services:
     image: sagemath/sagemath:latest
     container_name: sagemath
     ports:
-      - "8888:8888"
+      - "127.0.0.1:8888:8888"
     volumes:
       - ./notebooks:/home/sage/notebooks
     command: >
